@@ -3,3 +3,17 @@
     width: 800px;
     max-width: 90%;
 }
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.formControl {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.formLabel {
+    font-size: 1.3rem;
+    font-weight: 500;
+}

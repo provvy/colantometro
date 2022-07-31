@@ -2,28 +2,28 @@ import {useState} from "react";
 import styles from "./styles/App.module.css"
 import Button from "@mui/material/Button";
 import Form from "./components/Form";
+import Result from "./components/Result";
 
 interface StyleObj {
   [prop: string]: string | StyleObj
 }
 
-const App: React.FC = () => {
-
-  const [isStarted, setIsStarted] = useState<boolean>(false);
-
-  const buttonStyle: StyleObj = {
+export const buttonStyle: StyleObj = {
     width: "400px",
     maxWidth: "70%",
-    borderColor: "#361B00",
+    border: "2px solid #361B00",
     color: "#361B00",
     fontSize: "1.25rem",
     padding: "0.5rem 0",
-    borderWidth: "2px",
     "&:hover": {
-      borderColor: "#361B00",
-      borderWidth: "2px"
+      border: "2px solid #361B00",
     }
   }
+
+const App: React.FC = () => {
+
+  const [isStarted, setIsStarted] = useState<boolean>(false);
+  const [isFinished, setIsFinished] = useState<boolean>(false);
 
   return (
     <div className={styles.wrapper}>
@@ -36,8 +36,10 @@ const App: React.FC = () => {
           <div className={styles.buttonContainer}>
              <Button sx={buttonStyle} variant="outlined" onClick={() => setIsStarted(true)}>Inizia</Button>
           </div>
+        ) : !isFinished ? (
+          <Form setIsFinished={setIsFinished} />
         ) : (
-          <Form />
+          <Result />
         )}
       </main>
     </div>
